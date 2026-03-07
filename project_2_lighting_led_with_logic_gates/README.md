@@ -8,30 +8,35 @@ Design an FPGA that links the physical push buttons (switch inputs) to correspon
 Utilizes 4 LUTs in FPGA to create the following logic.
 
 AND gate w/ 2 Inputs:
-SW1 SW2 LED1
-0   0   0
-0   1   0
-1   0   0
-1   1   1
+| SW1 | SW2 | LED1 |
+|-----|-----|------|
+| 0   | 0   | 0    |
+| 0   | 1   | 0    |
+| 1   | 0   | 0    |
+| 1   | 1   | 1    |
+
 
 OR gate w/ 2 Inputs:
-SW3 SW4 LED2
-0   0   0
-0   1   1
-1   0   1
-1   1   1
+| SW3 | SW4 | LED2 |
+|-----|-----|------|
+| 0   | 0   | 0    |
+| 0   | 1   | 1    |
+| 1   | 0   | 1    |
+| 1   | 1   | 1    |
 
 XOR gate w/ 2 Inputs:
-SW3 SW4 LED3
-0   0   0
-0   1   1
-1   0   1
-1   1   0
+| SW3 | SW4 | LED3 |
+|-----|-----|------|
+| 0   | 0   | 0    |
+| 0   | 1   | 1    |
+| 1   | 0   | 1    |
+| 1   | 1   | 0    |
 
-NOT gate w/ 1 Input:
-SW4 LED4
-0   1
-1   0 
+NOT gate w/ 1 Input: 
+| SW4 | LED4 |
+|-----|------|
+| 0   | 1    |
+| 1   | 0    |
 
 Utilizing pin constraints file from Project 1.
 
