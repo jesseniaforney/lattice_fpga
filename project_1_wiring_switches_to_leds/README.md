@@ -1,5 +1,7 @@
 # Design Overview
-Design an FPGA that links the 4 physical push buttons (switch inputs) to the corresponding LED outputs on the board using Verilog and VHDL
+Design an FPGA that links the 4 physical push buttons (switch inputs) to the corresponding LED outputs on the board using Verilog and VHDL.
+
+See diagram.png for more details.
 
 ## Issues Debugged
 Did not add pin constraints file when programming and found board did not perform as expected
