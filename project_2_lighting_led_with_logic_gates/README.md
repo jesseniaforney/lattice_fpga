@@ -40,5 +40,7 @@ NOT gate w/ 1 Input:
 
 Utilizing pin constraints file from Project 1.
 
+See diagram.png for more details.
+
 ## Issues Debugged
 Found when LEDs were not set in logic it defaulted to being dimly lit. Can adjust code if needed to keep off at all times if not being used. In this case we are utilizing all LEDs so not an issue.
