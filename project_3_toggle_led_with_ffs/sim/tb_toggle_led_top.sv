@@ -45,11 +45,13 @@ module tb_toggle_led();
         r_in1 = 1;                     // Simulate a bounce
         assert(w_out1 == 1'b0) else $error("LED should still be OFF");
 
-        repeat(5) @(posedge r_clk);    // Wait for debounce counter to complete
+        repeat(7) @(posedge r_clk);    // Wait for debounce counter to complete
+        r_in1 = 0;
+      
+      	repeat(10) @(posedge r_clk);
         assert(w_out1 == 1'b1) else $error("LED should be ON");
-
-        repeat(2) @(posedge r_clk);    // Wait for a few clock cycles
-        $finish();  // End the simulation
+        
+      	$finish();  // End the simulation
     end
 
 endmodule

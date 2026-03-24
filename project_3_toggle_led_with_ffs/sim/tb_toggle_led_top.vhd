@@ -53,11 +53,13 @@ begin
         r_in1 <= '1';       -- Simulate a bounce
         assert (w_out1 = '0') severity failure;
 
-        wait for 40 ns;     -- Wait for debounce counter to complete
+        wait for 24 ns;     -- Wait for debounce counter to complete
+		r_in1 <= '0';
+        
+        wait for 40 ns;
         assert (w_out1 = '1') severity failure;
-
-        wait for 20 ns;
-        wait;               -- End the simulation 
+        
+        std.env.stop;               -- End the simulation 
     end process;
 
 end architecture sim;
