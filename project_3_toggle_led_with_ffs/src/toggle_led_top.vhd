@@ -12,7 +12,7 @@ entity toggle_led_top is
         i_rst        : in std_logic;                                           -- Reset Input
         i_switch_1   : in std_logic;                                           -- Switch 1 Input
         o_led_1      : out std_logic;                                          -- LED 1 Output
-        o_led_2      : out std_logic;                                          -- Unused LED Outputs
+        o_led_2      : out std_logic;                                          -- Unused LED Outputsac
         o_led_3      : out std_logic;                                          -- Unused LED Outputs
         o_led_4      : out std_logic                                           -- Unused LED Outputs
     );
@@ -23,7 +23,7 @@ architecture rtl of toggle_led_top is
 begin
     u_debounce : entity work.debounce_filter
     generic map(
-        DEBOUNCE_MAX => 250000
+        DEBOUNCE_MAX => DEBOUNCE_MAX
     )
     port map(
         i_clk              => i_clk,

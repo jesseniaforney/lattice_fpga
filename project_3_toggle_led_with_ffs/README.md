@@ -4,6 +4,7 @@ Design an FPGA that links a physical push button (switch input) to corresponding
 - Utilize falling edge of switch to toggle
 - Make sure LED only changes when push button is released and holds state
 - Will assign LEDs not being used to 0 since found they will be dimly lit if not assigned to anything. 
+- Add debouncer filter to account for boucning of mechanical switch input
 
 Utilizing pin constraints file from Project 1 + adding Clk Pin (runs at 25MHz or 40ns).
 Adding clock constraints file.
