@@ -1,3 +1,5 @@
+// Code your testbench here
+// or browse Examples
 // Testbench for toggle_led.sv
 
 module tb_toggle_led();
@@ -33,15 +35,25 @@ module tb_toggle_led();
         r_rst = 0;                     // Deassert reset
         
         // Create bouncing switch input (simulate a noisy button press)
-        repeat(3) @(posedge r_clk);  // Wait for a few clock cycles
+        repeat(3) @(posedge r_clk);    // Wait for a few clock cycles
         r_in1 = 1;                     // Simulate a button press
+        assert(w_out1 == 1'b0) else $error("LED should be OFF");
+
         @(posedge r_clk);
         r_in1 = 0;                     // Simulate button release
-        @(posedge r_clk);
-        r_in1 = 1;                     // Simulate another button press
-        repeat(6) @(posedge r_clk);  // Wait for a few clock cycles
+        assert(w_out1 == 1'b0) else $error("LED should still be OFF");
 
-        $finish();  // End the simulation
+        @(posedge r_clk);
+        r_in1 = 1;                     // Simulate a bounce
+        assert(w_out1 == 1'b0) else $error("LED should still be OFF");
+
+        repeat(7) @(posedge r_clk);    // Wait for debounce counter to complete
+        r_in1 = 0;
+      
+      	repeat(10) @(posedge r_clk);
+        assert(w_out1 == 1'b1) else $error("LED should be ON");
+        
+      	$finish();  // End the simulation
     end
 
 endmodule
