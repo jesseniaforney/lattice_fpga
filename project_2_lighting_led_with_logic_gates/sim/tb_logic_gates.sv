@@ -26,24 +26,43 @@ module tb_logic_gates ();
         r_in3 = 0;
         r_in4 = 0;
         #10;        // Wait for 10 time units
+        assert (w_out1 == 1'b0); // LED 1 should be OFF (AND gate)
+        assert (w_out2 == 1'b0); // LED 2 should be OFF (OR gate)
+        assert (w_out3 == 1'b0); // LED 3 should be OFF (XOR gate)
+        assert (w_out4 == 1'b1); // LED 4 should be ON  (NOT gate)
+
         // Test Case 2: Switch 1 and Switch 4 ON
         r_in1 = 0;
         r_in2 = 1;
         r_in3 = 0;
         r_in4 = 1;
         #10;        // Wait for 10 time units
+        assert (w_out1 == 1'b0); // LED 1 should be OFF (AND gate)
+        assert (w_out2 == 1'b1); // LED 2 should be ON  (OR gate)
+        assert (w_out3 == 1'b1); // LED 3 should be ON  (XOR gate)
+        assert (w_out4 == 1'b0); // LED 4 should be OFF (NOT gate)
+
         // Test Case 3: Switch 1 and Switch 3 ON
         r_in1 = 1;
         r_in2 = 0;
         r_in3 = 1;
         r_in4 = 0;
         #10;        // Wait for 10 time units
+        assert (w_out1 == 1'b0); // LED 1 should be OFF (AND gate)
+        assert (w_out2 == 1'b1); // LED 2 should be ON  (OR gate)
+        assert (w_out3 == 1'b1); // LED 3 should be ON  (XOR gate)
+        assert (w_out4 == 1'b1); // LED 4 should be ON  (NOT gate)
+
         // Test Case 4: ALL Switches ON
         r_in1 = 1;
         r_in2 = 1;
         r_in3 = 1;
         r_in4 = 1;
         #10;        // Wait for 10 time units
+        assert (w_out1 == 1'b1); // LED 1 should be ON  (AND gate)
+        assert (w_out2 == 1'b1); // LED 2 should be ON  (OR gate)
+        assert (w_out3 == 1'b0); // LED 3 should be OFF (XOR gate)
+        assert (w_out4 == 1'b0); // LED 4 should be OFF (NOT gate)
 
         $finish();  // End the simulation
     end
