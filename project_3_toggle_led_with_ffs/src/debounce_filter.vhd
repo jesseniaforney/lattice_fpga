@@ -27,16 +27,16 @@ begin
     begin
         if rising_edge(i_clk) then
             if i_rst = '1' then
-                r_debounce_cnt <= '0';                                                                  -- Initialize to 0
+                r_debounce_cnt <= 0;                                                                  -- Initialize to 0
                 r_switch_state <= '0';                                                                  -- Initialize to 0
-            else then
+            else
                 if ((i_switch_1 /= r_switch_state) and (r_debounce_cnt < (DEBOUNCE_MAX-1))) then          -- If switch input differs from switch state, start incrementing counter until stable enough time
                     r_debounce_cnt <= r_debounce_cnt + 1;  
                 elsif (r_debounce_cnt = (DEBOUNCE_MAX-1)) then                                          -- If counter reaches max time, then register switch state
                     r_switch_state <= i_switch_1;
-                    r_debounce_cnt <= '0';
-                else then                                                                               -- If switch input is the same as switch state, reset counter to 0
-                    r_debounce_cnt <= '0';
+                    r_debounce_cnt <= 0;
+                else                                                                               -- If switch input is the same as switch state, reset counter to 0
+                    r_debounce_cnt <= 0;
                 end if;
             end if;
         end if;

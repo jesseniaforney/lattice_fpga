@@ -1,5 +1,4 @@
 -- Code your testbench here
--- Code your testbench here
 -- Testbench that simulates toggle_led.vhd
 library ieee;
 use ieee.std_logic_1164.all;

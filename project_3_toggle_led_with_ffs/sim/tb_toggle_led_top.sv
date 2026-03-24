@@ -1,5 +1,3 @@
-// Code your testbench here
-// or browse Examples
 // Testbench for toggle_led.sv
 
 module tb_toggle_led();

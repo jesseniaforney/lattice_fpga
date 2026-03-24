@@ -36,6 +36,11 @@ begin
         r_in3 <= '0'; 
         r_in4 <= '0';
         wait for 10 ns;
+        -- assertion can be a note, warning, or failure
+        assert (w_out1 = '0') severity failure; -- LED 1 should be OFF (AND gate)
+        assert (w_out2 = '0') severity failure; -- LED 2 should be OFF (OR gate)
+        assert (w_out3 = '0') severity failure; -- LED 3 should be OFF (XOR gate)
+        assert (w_out4 = '1') severity failure; -- LED 4 should be ON  (NOT gate)
 
         -- Test case 2: Switch 2 and Switch 4 ON
         r_in1 <= '0'; 
@@ -43,13 +48,21 @@ begin
         r_in3 <= '0'; 
         r_in4 <= '1';
         wait for 10 ns;
-        
+        assert (w_out1 = '0') severity failure; -- LED 1 should be OFF (AND gate)
+        assert (w_out2 = '1') severity failure; -- LED 2 should be ON  (OR gate)
+        assert (w_out3 = '1') severity failure; -- LED 3 should be ON  (XOR gate)
+        assert (w_out4 = '0') severity failure; -- LED 4 should be OFF (NOT gate)
+
         -- Test case 3: Switch 1 and Switch 3 ON
         r_in1 <= '1'; 
         r_in2 <= '0'; 
         r_in3 <= '1'; 
         r_in4 <= '0';
         wait for 10 ns;
+        assert (w_out1 = '0') severity failure; -- LED 1 should be OFF (AND gate)
+        assert (w_out2 = '1') severity failure; -- LED 2 should be ON  (OR gate)
+        assert (w_out3 = '1') severity failure; -- LED 3 should be ON  (XOR gate)
+        assert (w_out4 = '1') severity failure; -- LED 4 should be ON  (NOT gate)
 
         -- Test case 4: All switches ON
         r_in1 <= '1'; 
@@ -57,6 +70,10 @@ begin
         r_in3 <= '1'; 
         r_in4 <= '1';
         wait for 10 ns;
+        assert (w_out1 = '1') severity failure; -- LED 1 should be ON  (AND gate)
+        assert (w_out2 = '1') severity failure; -- LED 2 should be ON  (OR gate)
+        assert (w_out3 = '0') severity failure; -- LED 3 should be OFF (XOR gate)
+        assert (w_out4 = '0') severity failure; -- LED 4 should be OFF (NOT gate)
 
         -- End of simulation
         wait;
